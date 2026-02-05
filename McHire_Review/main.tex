@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{graphicx}
+
+\title{McHire Security Review}
+\author{Andy Then}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Assets}
+McHire is a hiring platform by the fast-food mega-giant McDonald's. This software is a web application that uses their own AI agent and stores user data in a relational database and aims to expedite hiring using Large Language Models (LLMs) that interact directly with a user, asking questions that facilitate recruiters. With this system, it is important to identify what data is being shared. Since this is a hiring platform, users provide emails, social security numbers, phone numbers for contact, and other personally identifiable information (PII). This is an important asset that must be stored securely. To protect this data, it should be stored in a safe location, such as a database, with the plaintext encrypted. A modern, secure algorithm such as RSA should be used to prevent data from being easily accessible. Imagine a case where there is a vulnerability in a database engine and an adversary uses said vulnerability to obtain a complete or partially complete copy of the records. However, if they are encrypted, they cannot be read by Cyber groups. This mitigates the blast radius of the attack. The goal in this case is confidentiality.
+
+The user interacts with an LLM, which is susceptible to LLM poisoning. An data collection group might attempt a malicious prompt to find a backdoor or training data that reveals important information. In order to train LLMs, static data is required. If McHire's LLM has millions of records, valuable data can be used to further improve the model, but this training data can also fall into the hands of an adversary. This can be combated by blocking certain prompts that are likely harmful. Preventing data leaks allows recruiters to ensure integrity in the hiring process; preventing adversaries from understanding what the model is engineered to look for, and potentially selling that information will stop further data leakage.
+
+\section{Risk Assessment}
+In the event an adversary gains personally identifiable data, it could be used for a variety of reasons. Emails that are leaked could lead to phishing attempts. For example, a fraudulent email could be sent to the victim explaining they have been chosen for the job.All that needs to be done on their end is to enter credentials on a fake website, which could then be used for identity fraud, false transactions, etc. If an attacker understands what makes McHire's large language model work, that information can be shared with others and severely damage the integrity of the hiring process. This results in wasting company resources on candidates who exploited the obtained information to secure jobs that were not truly deserved.These issues are serious if the correct security strategies are not applied.
+
+\section{Final Conclusion}
+In the world of security, one approach does not work for every company. Decisions must be chosen tactically. With every security feature, there comes a compromise. We can have the user identify themselves multiple times: an application, a password, and finally, a passkey. While this provides a great deal of security, it is very difficult for the end user and may discourage them from using the software altogether. One can also envision the flow of calls going into technical support when a customer of the software is missing a single one of these credentials. One could grok that certain remediation strategies exist to recover information, and while this may help with passwords and two-factor authentication depending on the method used, this path leads us into unnecessary levels of complexity. So, while you may have a system constructed with the latest and greatest security practices, if simple actions become a frustrating amalgamation that dissuades both users and adversaries from using the software, there is really no winner. Should we really trust Artificial 
+Intelligence to make well informed decisions when looking for a candidate? Large Language Models are prone to bias. Perhaps you can say it will never be free of bias, and that is true since there is an inherent
+bias when looking at data the model is trained on. However, the technology has been deeply integrated into modern software development, and with constant iterations in the last three years,
+it is the job of security practitioners to reduce the attack surface and prevent sensitive information.
+
+\bibliographystyle{plain}
+\cite{krebs2025}
+\bibliography{works}
+\end{document}

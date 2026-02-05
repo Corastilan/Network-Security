@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{Network Security Draft}
+\author{Andy Then}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Robots thing}
+Paradox ai suffered a data breach. This breach had such an insubordinate amount of security failures, it makes one question how this company is allowed
+to operate legally. Vast amount of the network were left unencrypted, hardly any authorization checks where put into place, trusting everything that was being sent by the client. Which is far from the zero trust model that is quite popular in cybersecurity today. In any company's modern security practices, one would seek high standards to ensure such miniscule vulnerabilities cannot be exploited. Millions of people had their personally identifiable information taken after 
+the company paradox.ai had one of their testing accounts in production. Not only did such account still exist, but it had an easily guessable password of "123456".
+Afterwards, millions of chat logs could be extracted. Paradox developers originally had one of their developer accounts stolen by a strain of malware known as Nexus Stealer. 
+
+\section{Connections and importance of security}
+Paradox has a vast network. With companies such as Aramark, Lockheed Martin, Lowes, and Pepsi Bottling Co. A character of seven letters, of which were only
+numbers, is a very failliable password. After the report by KrebsOnSecurity, the company did confirm only some credentials were taken. Although it was largely downplayed. They claimed that only a few accounts were compromised, and the situation was quickly remediated. 
+
+\section{The two issues we're going to talk about}
+We're going to explain failure to authenticate. In a technical sense, we would implement policies such as zero-trust model. This is very common and widely encouraged in the field. But when there are no checks, anyone can impersonate accounts that they wish to be. 
+
+The second thing we'll explain is the leak of PPI. This can be used by other adversaries to spread malware, or use phishing attempts on the vast quantities of emails they have contained. One such example is this: Let's say the MCHire platform has much of their frontend copied, and a fake site is set up in the attempt to trick those who have applied through the platform that their were successfully hired, and to complete their application process, they must enter more PPI on a fake website. This can be a goldmine for adversaries, allowed them to gain a vast amount of PPI such as Social Security Numbers, Bank account details, and more.
+
+
+\section{Paradox.ai and the McHire Platform}
+McDonald's is a global fast-food chain, with restaurants that span across the globe. With over 40,000 locations worldwide, and with 13,794 locations in the United States alone. This large company oversees many operations. Hiring the right employees is one of those critical operations. McHire is a conversational hiring software developed by Paradox.ai for McDonald's. Paradox.ai implements various chatbots in the form of LLMs (Large Language Models) to simplify the hiring process. But, the implementation of this hiring platform was found to contain an administrative account with loose protection policies. An account used for testing with the name "admin" and password "123456" was found after a developer for Paradox.ai had their computer infected with a strain of Nexus stealer. This admin account had full privileges to the McHire platform. Capable of viewing all chats the McHire assistant engaged with. There was a leak of over 64 million records. Personally identifiable information was obtained, such as names, phone numbers, and email addresses. 
+
+
+\section{Assets}
+Let's discuss the McHire platform. This simplifies the hiring process by offloading some of the questionnaires to LLMs and focusing on potential candidates. Such a system that processes millions of records. 
+This hiring platform needs to take actions that ensure the data integrity of the customers who use this software. One such example is authentication to ensure that the right user is logged into their own account.
+If there is no proper authentication, then an adversary could attempt to log into other users accounts and obtain personally identifiable information such as emails, addresses, and full names. Next, the user may store information in a database. This database could have a defined schema or no defined schema. It should be considered that none of the values stored in these databases are in plain text. A strong, modern encryption scheme should be used such as SHA-3. This protection mechanism reduces the probability of data leak from an event such as a developer with credentials to enter the database whose account has been compromised cannot give the attacker all kinds of data. 
+
+To ensure each figure of the software gets only the access they need to each part of the application, we follow the principle of least privilege security practice. Doing so implements crucial protection 
+and mitigate collateral damage if a user(s) with elevated privileges has their credentials stolen by an adversary. Another protection mechanism we can set up is mandatory two-factor authentication. 
+
+Another weakness of the McHire system is the Large Language model interacting with the user is the adversary may poison the LLM to give data that it should not give. Given that the model has millions of records, said
+record may also be used as training data to improve the large language model. However, the model is susceptible to false information or back doors that can then be exploited. Engineers can work to protect the model from sensitive information by setting parameters that ensure when an adversary attempts to engage in certain topics that may compromise the AI, abruptly end the conversation. While this is not comprehensive and legitimate users may falsely trigger one of these checks while interacting, having basic checks is a much better alternative than none at all.
+
+\section{Conclusion}
+
+In the world of security, one approach does not work with every company. Decisions are to be chosen tactically. With every security feature, there comes a compromise. We can have the user identify multiple times.
+An application, a password, and finally, a passkey. This is a great deal of security. However, this is very difficult for the end user. Discouraging for them to use the software all together. One can also envision
+the flow of calls going into technical support when a customer of the software is missing a single one of these credentials. One could grok that certain remediation strategies to recover certain information, and while
+this may help with passwords and two-factor authentication depending on the method used. This path leads us into levels of complexity not necessary. So while you have a system constructed with the latest and greatest
+security practices, if simple actions become a frustrating amalgamation that dissuades both users and adversaries from using the software, there is really no winner. 
+
+
+\end{document}
